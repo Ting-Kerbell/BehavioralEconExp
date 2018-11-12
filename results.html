@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+
+    <title>Behavioral Econ Experiment</title>
+</head>
+<body>
+    <div id = "res">
+        RESULTS: <br>
+    </div>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js"></script>
+<script>
+pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
+            subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
+
+pubnub.subscribe({
+    channels: ["behave"] 
+});
+pubnub.addListener({
+
+    message: function(obj){
+                    //occurs when channellist gets a new message
+
+                    console.log(obj.message);
+                      document.getElementById("res").innerHTML += obj.message + "<br>"
+                    var num = parseInt(obj.message);
+                  
+                
+            }}
+            );
+pubnub.history(
+    {
+        channel : "behave",
+        count : 900
+    },
+    function (status, response) {
+        console.log(response);
+        var s = JSON.stringify(response);
+        var obj = JSON.parse(s);
+        console.log(s);
+        obj.messages.forEach(function (message) {
+            console.log("heee")
+            document.getElementById("res").innerHTML += (message.entry+"<br>");
+        }
+        );
+       
+    }
+    );
+
+</script>
+</body>

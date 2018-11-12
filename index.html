@@ -13,24 +13,66 @@
     <title>Behavioral Econ Experiment</title>
 </head>
 <body>
-<div class="navigation">
-            <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
-
-            <label for="navi-toggle" class="navigation__button">
-                <span class="navigation__icon">&nbsp;</span>
-            </label>
-
-            <div class="navigation__background">&nbsp;</div>
-
-            <nav class="navigation__nav">
-                <ul class="navigation__list">
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>01</span>About Natous</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>02</span>Your benfits</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>03</span>Popular tours</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>04</span>Stories</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>05</span>Book now</a></li>
-                    </ul>
-            </nav>
+     <div class="container">
+            <section class="section-stories">
+    <div class="bg-video">
+        <img src = "img/back.jpg" class="bg-video__content" alt = "?">
+          
+        
+    </div>
+    <div class="u-center-text u-margin-bottom-big">
+            <h2 class= "heading-secondary">
+                i wanna cry
+            </h2>
         </div>
+        <div class="row">
+            <div class="story">
+                <figure class="story__shape" >
+                   <img class= "story__img" src="img/back.jpg">
+                    <figcaption class="story__caption"> please concentrate on the experiment.</figcaption>
+                </figure>
+            <div class="story__text">
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                    Instructions
+                </h3>
+                <p>
+                    putem here son
+                </p>
+            </div>
+            </div>
 
+        </div>
+        <div class="row">
+            <div class="story">
+               
+            <div class="story__text">
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                   Enter Info Please
+                </h3>
+                <input type="text" style = "display:block; " placeholder="Enter your name">
+                <input type="number" style = "display:block; margin-top:3%;" placeholder="Place Bet">
+            </div>
+            </div>
+            </div>
+            <div class="u-center-text u-margin-top-big"> <a id = "sub" href="#" class="btn btn--green btn--animated"> Submit! </a>
+                </div>
+</section>
+                     
+    </div>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js"></script>
+<script>
+
+pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
+            subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
+$("#sub").click(function(){
+    console.log("hello");
+    pubnub.publish({channel : "behave", message : "testtest"}); //send the message to pubnub
+})
+
+</script>
 </body>
+
+
