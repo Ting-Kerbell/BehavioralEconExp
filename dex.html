@@ -66,6 +66,7 @@ i = parseInt(iter);
 if(iter==null){
     iter = 0;
     console.log(iter);
+    i=0;
 
 }else if(iter==4){
     
@@ -93,9 +94,9 @@ $("#sub").click(function(){
     var str = name + " Bet: "+ String(betNum) + " amount: "+String(monLeft);
     console.log(str);
     i++;
-    append = "?i="+String(i)+"&x="+String(monLeft)"&type=inf";
+    
     pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
-
+    append = "?i="+String(i)+"&x="+String(monLeft)+"&type=inf";
     lin = "https://ting-kerbell.github.io/BehavioralEconExp/pause.html" + append;
     location.replace(lin);
 })
