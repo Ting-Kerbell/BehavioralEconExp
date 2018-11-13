@@ -146,6 +146,23 @@ if(ty == null){
     }
 }else if(i%2==1){
     link = "https://ting-kerbell.github.io/BehavioralEconExp/dex.html?i="+iter
+     $("#check").text("Check the back to see the result of your bet!");
+    num = parseInt(result);
+    if(num < 100){
+        $("#bethed").text("You lost this round! You made a total of")
+        $("#bet").text("$"+result);
+        $("#betfoot").text("this round")
+    }else if(num == 100){
+        $("#bethed").text("Looks like you didn't this round! You made a total of")
+        $("#bet").text("$"+result);
+        $("#betfoot").text("this round")
+    } else {
+        $("#bethed").text("You won this round! You made a total of")
+        $("#bet").text("$"+result);
+        $("#betfoot").text("this round")
+    }
+}else {
+    link = "https://ting-kerbell.github.io/BehavioralEconExp/dex.html?i="+iter;
 }
 if(iter==null){
     iter = 1;
