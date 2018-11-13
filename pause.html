@@ -84,7 +84,7 @@
                                         </p>
                                         <p id="betfoot" class="card__price-only"> </p>
                                     </div>
-                                    <a class="btn btn--white" href="#">Continue to Next Round!</a>
+                                    <a id="next" class="btn btn--white" href="#">Continue to Next Round!</a>
                                 </div></div> 
                         </div>
                     </div>
@@ -124,8 +124,10 @@
 <script>
 const urlParams = new URLSearchParams(window.location.search);
 iter = urlParams.get('i');
+i = parseInt(iter);
 ty = urlParams.get('type');
 result = urlParams.get('x');
+link = "https://ting-kerbell.github.io/BehavioralEconExp/index.html?i="+iter
 if(ty == null){
     $("#check").text("Check the back to see the result of your bet!");
     num = parseInt(result);
@@ -133,8 +135,17 @@ if(ty == null){
         $("#bethed").text("You lost this round! You made a total of")
         $("#bet").text("$"+result);
         $("#betfoot").text("this round")
+    }else if(num == 100){
+        $("#bethed").text("Looks like you didn't this round! You made a total of")
+        $("#bet").text("$"+result);
+        $("#betfoot").text("this round")
+    } else {
+        $("#bethed").text("You won this round! You made a total of")
+        $("#bet").text("$"+result);
+        $("#betfoot").text("this round")
     }
-
+}else if(i%2==1){
+    link = "https://ting-kerbell.github.io/BehavioralEconExp/dex.html?i="+iter
 }
 if(iter==null){
     iter = 1;
@@ -142,6 +153,10 @@ if(iter==null){
     
 }
 $('#round span').text("Round "+iter+" Complete!");
+$("#next").click(function(){
+    
+    location.replace(link);
+})
 
 </script>
 </body>

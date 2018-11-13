@@ -93,13 +93,9 @@ $("#sub").click(function(){
     var str = name + " Bet: "+ String(betNum) + " amount: "+String(monLeft);
     console.log(str);
     i++;
-    append = "?i="+String(i)+"&x="+String(monLeft);
+    append = "?i="+String(i)+"&x="+String(monLeft)"&type=inf";
     pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
 
-    if(i % 2 == 0){
-        append+="&type=inf"
-
-    }
     lin = "https://ting-kerbell.github.io/BehavioralEconExp/pause.html" + append;
     location.replace(lin);
 })
