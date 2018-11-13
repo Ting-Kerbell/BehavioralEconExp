@@ -13,15 +13,15 @@
     <title>Behavioral Econ Experiment</title>
 </head>
 <body>
-     
             <section class="section-stories">
-    <div class="bg-video">
-        <img src = "img/back.jpg" alt = "eh" class="bg-video__content" >
+
+   <!--<div class="bg-video" style = "background-image: img/back.jpg;"> -->
+    <!--    <img src = "img/back.jpg" alt = "eh" class="bg-video"> -->
            
-    </div>
+    <!-- </div> -->
     <div class="u-center-text u-margin-bottom-big">
             <h2 class= "heading-secondary">
-                i wanna cry
+                Play to Win!
             </h2>
         </div>
         <div class="row">
@@ -50,7 +50,7 @@
             </div>
             </div>
             </div>
-            <div class="u-center-text u-margin-top-big"> <a id = "sub" href="#" class="btn btn--green"> Submit! </a>
+            <div class="u-center-text u-margin-top-big"> <a id = "sub" href="#" class="btn btn--green" > Submit! </a>
                 </div>
 </section>
 
@@ -59,7 +59,17 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js"></script>
 <script>
+//ADD ?title="he"&blah="dwada" to end of things
+const urlParams = new URLSearchParams(window.location.search);
+iter = urlParams.get('i');
+if(iter==null){
+    iter = 0;
+    console.log(iter);
 
+}else if(iter==4){
+    
+    location.replace("https://ting-kerbell.github.io/BehavioralEconExp/done.html")
+}
 pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
             subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
 function calcBet(bet){
