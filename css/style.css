@@ -286,8 +286,6 @@ body {
     display: inline-block; }
 
 .card {
-  perspective: 150rem;
-  -moz-perspective: 150rem;
   height: 52rem; }
   .card__side {
     background-color: green;
