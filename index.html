@@ -15,7 +15,10 @@
 <body>
      
             <section class="section-stories">
-    
+    <div class="bg-video">
+        <img src = "img/back.jpg" alt = "eh" class="bg-video__content" >
+           
+    </div>
     <div class="u-center-text u-margin-bottom-big">
             <h2 class= "heading-secondary">
                 i wanna cry
@@ -42,12 +45,12 @@
                 <h3 class="heading-tertiary u-margin-bottom-small">
                    Enter Info Please
                 </h3>
-                <input type="text" style = "display:block; " placeholder="Enter your name">
-                <input type="number" style = "display:block; margin-top:3%;" placeholder="Place Bet">
+                <input id = "nameform" type="text" style = "display:block; " placeholder="Enter your name">
+                <input id = "bet" type="number" style = "display:block; margin-top:3%;" placeholder="Place Bet">
             </div>
             </div>
             </div>
-            <div class="u-center-text u-margin-top-big"> <a id = "sub" href="#" class="btn btn--green btn--animated"> Submit! </a>
+            <div class="u-center-text u-margin-top-big"> <a id = "sub" href="#" class="btn btn--green"> Submit! </a>
                 </div>
 </section>
 
@@ -59,9 +62,27 @@
 
 pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
             subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
+function calcBet(bet){
+    var res =  Math.floor(Math.random() * (3) + 1);
+    console.log(res);
+    if(res==2){
+        return bet * 2.5;
+    }else{
+        return 0;
+    }
+
+}
 $("#sub").click(function(){
     console.log("hello");
-    pubnub.publish({channel : "behave", message : "testtest"}); //send the message to pubnub
+    var name = document.getElementById("nameform").value;
+    var betNum = document.getElementById("bet").value;
+    var resultVal = calcBet(betNum);
+    var monLeft = 100-betNum+resultVal;
+    console.log(resultVal);
+    var str = name + " Bet: "+ String(betNum) + " amount: "+String(monLeft);
+    console.log(str);
+
+    //pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
 })
 
 </script>

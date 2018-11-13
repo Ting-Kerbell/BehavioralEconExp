@@ -13,115 +13,58 @@
     <title>Behavioral Econ Experiment</title>
 </head>
 <body>
-    <div class="navigation">
-        <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+     
+            <section class="section-stories">
+    
+    <div class="u-center-text u-margin-bottom-big">
+            <h2 class= "heading-secondary">
+                i wanna cry
+            </h2>
+        </div>
+        <div class="row">
+            <div class="story">
+               
+            <div class="story__text">
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                    Instructions
+                </h3>
+                <p>
+                    putem here son
+                </p>
+            </div>
+            </div>
 
-        <label for="navi-toggle" class="navigation__button">
-            <span class="navigation__icon">&nbsp;</span>
-        </label>
+        </div>
+        <div class="row">
+            <div class="story">
+               
+            <div class="story__text">
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                   Enter Info Please
+                </h3>
+                <input type="text" style = "display:block; " placeholder="Enter your name">
+                <input type="number" style = "display:block; margin-top:3%;" placeholder="Place Bet">
+            </div>
+            </div>
+            </div>
+            <div class="u-center-text u-margin-top-big"> <a id = "sub" href="#" class="btn btn--green"> Submit! </a>
+                </div>
+</section>
 
-        <div class="navigation__background">&nbsp;</div>
 
-        <nav class="navigation__nav">
-            <ul class="navigation__list">
-                <li class="navigation__item"><a href="#" class="navigation__link"><span>01</span>Continue to Next round by</a></li>
-                <li class="navigation__item"><a href="#" class="navigation__link"><span>02</span>Your benfits</a></li>
-                <li class="navigation__item"><a href="#" class="navigation__link"><span>03</span>Popular tours</a></li>
-                <li class="navigation__item"><a href="#" class="navigation__link"><span>04</span>Stories</a></li>
-                <li class="navigation__item"><a href="#" class="navigation__link"><span>05</span>Book now</a></li>
-            </ul>
-        </nav>
-    </div>
-
-</body>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
-<script type="text/javascript" src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js></script>
+<script type="text/javascript" src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js"></script>
 <script>
-round = 0;
-min = 100;
+
 pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
-            subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'dgd' }); //keys UUID IS IMPORTANT NOW
-
-pubnub.subscribe({
-    channels: ['behave'] 
-});
-
-pubnub.addListener({
-    
-    message: function(obj){
-                    //occurs when channellist gets a new message
-                    console.log(obj.message);
-                    var num = parseInt(obj.message);
-                    if(num!=6 && min>num){
-                      min = num;
-                  }
-                  if(document.getElementById("count1")!=null){
-
-                    if(num==0){
-                        var b = document.getElementById("count1")
-
-                        b.innerHTML = 1 + parseInt(b.innerHTML)
-                    } else if(num==1){
-                        var b = document.getElementById("count2")
-                        b.innerHTML = 1 + parseInt(b.innerHTML)
-                    }else if(num==3){
-                        var b = document.getElementById("count3")
-                        b.innerHTML = 1 + parseInt(b.innerHTML)
-                    }else if(num==4){
-                        var b = document.getElementById("count4")
-                        b.innerHTML = 1 + parseInt(b.innerHTML)
-                    }else if(num==5){
-                        var b = document.getElementById("count5")
-                        b.innerHTML = 1 + parseInt(b.innerHTML)
-                    }
-                }
-                
-            }}
-            );
-$("#reset").click(function() {
-    console.log("hello")
-        pubnub.publish({channel : "game", message : "6"}); //send the message to pubnub
-        min = 100;
-        round++;
-        document.getElementById("count1").innerHTML=0;
-        document.getElementById("count2").innerHTML=0;
-        document.getElementById("count3").innerHTML=0;
-        document.getElementById("count4").innerHTML=0;
-        document.getElementById("count5").innerHTML=0;
-        document.getElementById("count1").style.visibility = "hidden";
-        document.getElementById("count2").style.visibility = "hidden";
-        document.getElementById("count3").style.visibility = "hidden";
-        document.getElementById("count4").style.visibility = "hidden";
-        document.getElementById("count5").style.visibility = "hidden";
-        document.getElementById("roundnum").innerHTML = "Round "+round;
-        var res = document.getElementById("result");
-        res.src = "css/img/sec.jpg";
-
-
-    })
-$("#end").click(function() {
-    console.log("hello")
-    
-    var bane = get_chance(min);
-    document.getElementById("count1").style.visibility = "visible";
-    document.getElementById("count2").style.visibility = "visible";
-    document.getElementById("count3").style.visibility = "visible";
-    document.getElementById("count4").style.visibility = "visible";
-    document.getElementById("count5").style.visibility = "visible";
-    document.getElementById("count1").innerHTML= payoff(0, bane);
-    document.getElementById("count2").innerHTML=payoff(5, bane);
-    document.getElementById("count3").innerHTML=payoff(10, bane);
-    document.getElementById("count4").innerHTML=payoff(15, bane);
-    document.getElementById("count5").innerHTML=payoff(20, bane);
-
+            subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
+$("#sub").click(function(){
+    console.log("hello");
+    pubnub.publish({channel : "behave", message : "testtest"}); //send the message to pubnub
 })
-$("#show").click(function() {
-    console.log("show")
-    document.getElementById("count1").style.visibility = "visible";
-    document.getElementById("count2").style.visibility = "visible";
-    document.getElementById("count3").style.visibility = "visible";
-    document.getElementById("count4").style.visibility = "visible";
-    document.getElementById("count5").style.visibility = "visible";
 
-})
+</script>
+</body>
+
+
