@@ -13,25 +13,6 @@
     <title>Behavioral Econ Experiment</title>
 </head>
 <body>
-     <div class="navigation">
-            <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
-
-            <label for="navi-toggle" class="navigation__button">
-                <span class="navigation__icon">&nbsp;</span>
-            </label>
-
-            <div class="navigation__background">&nbsp;</div>
-
-            <nav class="navigation__nav">
-                <ul class="navigation__list">
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>01</span>About Natous</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>02</span>Your benfits</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>03</span>Popular tours</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>04</span>Stories</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>05</span>Book now</a></li>
-                    </ul>
-            </nav>
-        </div>
             <section class="section-stories">
 
    <!--<div class="bg-video" style = "background-image: img/back.jpg;"> -->
@@ -69,7 +50,7 @@
             </div>
             </div>
             </div>
-            <div class="u-center-text u-margin-top-big"> <a id = "sub" href="#" class="btn btn--green" > Submit! </a>
+            <div class="u-center-text u-margin-top-big"> <a id = "sub" href="#" class="btn btn--white" > Submit! </a>
                 </div>
 </section>
 
@@ -81,9 +62,14 @@
 //ADD ?title="he"&blah="dwada" to end of things
 const urlParams = new URLSearchParams(window.location.search);
 iter = urlParams.get('i');
+i = parseInt(iter);
 if(iter==null){
     iter = 0;
     console.log(iter);
+
+}else if(iter==4){
+    
+    location.replace("https://ting-kerbell.github.io/BehavioralEconExp/done.html")
 }
 pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
             subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
@@ -106,8 +92,16 @@ $("#sub").click(function(){
     console.log(resultVal);
     var str = name + " Bet: "+ String(betNum) + " amount: "+String(monLeft);
     console.log(str);
+    i++;
+    append = "?i="+String(i)+"&x="+String(monLeft);
+    pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
 
-    //pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
+    if(i % 2 == 0){
+        append+="&type=inf"
+
+    }
+    lin = "https://ting-kerbell.github.io/BehavioralEconExp/pause.html" + append;
+    location.replace(lin);
 })
 
 </script>
