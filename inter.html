@@ -130,20 +130,10 @@ ty = urlParams.get('type');
 result = urlParams.get('x');
 link = "https://ting-kerbell.github.io/BehavioralEconExp/dex.html?i="+iter
     $("#check").text("Check the back to see the result of your bet!");
-    num = parseInt(result);
-    if(num < 100){
-        $("#bethed").text("You lost this round! You made a total of")
-        $("#bet").text("$"+result);
-        $("#betfoot").text("this round")
-    }else if(num == 100){
-        $("#bethed").text("Looks like you didn't this round! You made a total of")
-        $("#bet").text("$"+result);
-        $("#betfoot").text("this round")
-    } else {
-        $("#bethed").text("You won this round! You made a total of")
-        $("#bet").text("$"+result);
-        $("#betfoot").text("this round")
-    }
+   
+     $("#bethed").text("You made a total of")
+     $("#bet").text("$"+result);
+     $("#betfoot").text("these past two rounds")
 if(iter==null){
     iter = "1";
     console.log(iter);
@@ -151,10 +141,7 @@ if(iter==null){
 }
 $('#round span').text("Round "+iter+" Complete!");
 $("#next").click(function(){
-    if(i==4){
     
-    location.replace("https://ting-kerbell.github.io/BehavioralEconExp/done.html");
-}
     location.replace(link);
 })
 
