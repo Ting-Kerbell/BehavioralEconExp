@@ -111,15 +111,15 @@ link = "https://ting-kerbell.github.io/BehavioralEconExp/index.html?i="+iter
     $("#check").text("Check the back to see the result of your bet!");
     num = parseInt(result);
     if(num < 100){
-        $("#bethed").text("You lost this round! You made a total of")
+        $("#bethed").text("You lost this round! You are left with a total of")
         $("#bet").text("$"+result);
         $("#betfoot").text("this round")
     }else if(num == 100){
-        $("#bethed").text("Looks like you didn't this round! You made a total of")
+        $("#bethed").text("Looks like you didn't this round! You are left with a total of")
         $("#bet").text("$"+result);
         $("#betfoot").text("this round")
     } else {
-        $("#bethed").text("You won this round! You made a total of")
+        $("#bethed").text("You won this round! You are left with a total of")
         $("#bet").text("$"+result);
         $("#betfoot").text("this round")
     }
