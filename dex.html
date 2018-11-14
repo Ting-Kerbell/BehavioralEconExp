@@ -102,7 +102,7 @@ $("#sub").click(function(){
     pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
     append = "?i="+String(i)+"&x="+String(currBetnum);
     lin = "https://ting-kerbell.github.io/BehavioralEconExp/dex.html" + append;
-    if(i%2==1){
+    if(i%2==0){
         lin = "https://ting-kerbell.github.io/BehavioralEconExp/inter.html" + append;
     }
 
