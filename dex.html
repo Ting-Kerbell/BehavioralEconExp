@@ -63,21 +63,23 @@
 const urlParams = new URLSearchParams(window.location.search);
 iter = urlParams.get('i');
 currBet=urlParams.get('x');
-
+i = -1;
 if(currBet == null){
     currBetnum = 0;
 }else{
     currBetnum = parseInt(currBet);
 }
 i = parseInt(iter);
-if(iter==null){
-    iter = "1";
+if(iter==null){   
     console.log(iter);
     i=0;
+    iter = "1";
 
+}else{
+    i = parseInt(iter);
 } 
 $("#rd").text("Round "+iter);
-i = parseInt(iter)-1; 
+ 
 pubnub = new PubNub({ publishKey : 'pub-c-aabc5896-0d69-48a0-a1c4-8b50df84e72d', 
             subscribeKey : 'sub-c-54dd73f4-e7a2-11e8-91a4-7e00ddddd7aa', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
 function calcBet(bet){
@@ -104,7 +106,7 @@ $("#sub").click(function(){
     pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
     append = "?i="+String(i)+"&x="+String(currBetnum);
     lin = "https://ting-kerbell.github.io/BehavioralEconExp/dex.html" + append;
-    if(i%2==0){
+    if(i%2==1){
         lin = "https://ting-kerbell.github.io/BehavioralEconExp/inter.html" + append;
     }
 
