@@ -73,11 +73,11 @@ i = parseInt(iter);
 if(iter==null){
     iter = "1";
     console.log(iter);
-    i=1;
+    i=0;
 
 } 
 $("#rd").text("Round "+iter);
-i = parseInt(iter); 
+i = parseInt(iter)-1; 
 pubnub = new PubNub({ publishKey : 'pub-c-aabc5896-0d69-48a0-a1c4-8b50df84e72d', 
             subscribeKey : 'sub-c-54dd73f4-e7a2-11e8-91a4-7e00ddddd7aa', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
 function calcBet(bet){

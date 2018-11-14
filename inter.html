@@ -124,7 +124,7 @@
 <script>
 const urlParams = new URLSearchParams(window.location.search);
 iter = urlParams.get('i');
-i = parseInt(iter);
+i = parseInt(iter)-1;
 
 ty = urlParams.get('type');
 result = urlParams.get('x');
@@ -151,7 +151,7 @@ if(iter==null){
 }
 $('#round span').text("Round "+iter+" Complete!");
 $("#next").click(function(){
-    if(iter=="5"){
+    if(i==4){
     
     location.replace("https://ting-kerbell.github.io/BehavioralEconExp/done.html");
 }
