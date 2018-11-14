@@ -45,7 +45,6 @@
                 <h3 class="heading-tertiary u-margin-bottom-small">
                    Enter Info Please
                 </h3>
-                <input id = "nameform" type="text" style = "display:block; " placeholder="Enter your name">
                 <input id = "bet" type="number" style = "display:block; margin-top:3%;" placeholder="Place Bet">
             </div>
             </div>
@@ -73,8 +72,6 @@ if(iter==null){
     i = parseInt(iter);
 }
 
-pubnub = new PubNub({ publishKey : 'pub-c-aabc5896-0d69-48a0-a1c4-8b50df84e72d', 
-            subscribeKey : 'sub-c-54dd73f4-e7a2-11e8-91a4-7e00ddddd7aa', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
 function calcBet(bet){
     var res =  Math.floor(Math.random() * (3) + 1);
     console.log(res);
@@ -87,13 +84,12 @@ function calcBet(bet){
 }
 $("#sub").click(function(){
     console.log("hello");
-    var name = document.getElementById("nameform").value;
+ 
     var betNum = document.getElementById("bet").value;
     var resultVal = calcBet(betNum);
     var monLeft = 100-betNum+resultVal;
     console.log(resultVal);
-    var str = name + " Bet: "+ String(betNum) + " amount: "+String(monLeft);
-    console.log(str);
+  
 
    // pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
     i++;
