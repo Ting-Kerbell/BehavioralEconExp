@@ -73,12 +73,8 @@ i = parseInt(iter);
 if(iter==null){   
     console.log(iter);
     i=0;
-    iter = "1";
-
-}else{
-    i = parseInt(iter);
-} 
-$("#rd").text("Round "+iter);
+}
+$("#rd").text("Round "+parseInt(i+1));
  
 pubnub = new PubNub({ publishKey : 'pub-c-aabc5896-0d69-48a0-a1c4-8b50df84e72d', 
             subscribeKey : 'sub-c-54dd73f4-e7a2-11e8-91a4-7e00ddddd7aa', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
