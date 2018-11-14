@@ -298,6 +298,7 @@ body {
     border-radius: 3px;
     overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden; }
     .card__side--front {
       background-color: #fff; }
@@ -319,6 +320,7 @@ body {
     background-blend-mode: screen;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
     .card__picture--1 {
        }

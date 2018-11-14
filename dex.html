@@ -18,9 +18,9 @@
    <!--<div class="bg-video" style = "background-image: img/back.jpg;"> -->
     <!--    <img src = "img/back.jpg" alt = "eh" class="bg-video"> -->
            
-    <!-- </div> -->
+    <!-- </div> ADD ROUND AT THE TOP -->
     <div class="u-center-text u-margin-bottom-big">
-            <h2 class= "heading-secondary">
+            <h2 id = "rd" class= "heading-secondary">
                 Play to Win!
             </h2>
         </div>
@@ -62,16 +62,22 @@
 //ADD ?title="he"&blah="dwada" to end of things
 const urlParams = new URLSearchParams(window.location.search);
 iter = urlParams.get('i');
+currBet=urlParams.get('x');
+
+if(currBet == null){
+    currBetnum = 0;
+}else{
+    currBetnum = parseInt(currBet);
+}
 i = parseInt(iter);
 if(iter==null){
-    iter = 0;
+    iter = "1";
     console.log(iter);
-    i=0;
+    i=1;
 
-}else if(iter==4){
-    
-    location.replace("https://ting-kerbell.github.io/BehavioralEconExp/done.html")
-}
+} 
+$("#rd").text("Round "+iter);
+i = parseInt(iter); 
 pubnub = new PubNub({ publishKey : 'pub-c-aabc5896-0d69-48a0-a1c4-8b50df84e72d', 
             subscribeKey : 'sub-c-54dd73f4-e7a2-11e8-91a4-7e00ddddd7aa', uuid: 'daa' }); //keys UUID IS IMPORTANT NOW
 function calcBet(bet){
@@ -90,13 +96,18 @@ $("#sub").click(function(){
     var betNum = document.getElementById("bet").value;
     var resultVal = calcBet(betNum);
     var monLeft = 100-betNum+resultVal;
+    currBetnum+=monLeft;
     console.log(resultVal);
     var str = name + " Bet: "+ String(betNum) + " amount: "+String(monLeft);
     console.log(str);
     i++;
     pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
-    append = "?i="+String(i)+"&x="+String(monLeft)+"&type=inf";
-    lin = "https://ting-kerbell.github.io/BehavioralEconExp/pause.html" + append;
+    append = "?i="+String(i)+"&x="+String(currBetnum);
+    lin = "https://ting-kerbell.github.io/BehavioralEconExp/dex.html" + append;
+    if(i%2==0){
+        lin = "https://ting-kerbell.github.io/BehavioralEconExp/inter.html" + append;
+    }
+
     location.replace(lin);
 })
 

@@ -125,9 +125,10 @@
 const urlParams = new URLSearchParams(window.location.search);
 iter = urlParams.get('i');
 i = parseInt(iter);
+
 ty = urlParams.get('type');
 result = urlParams.get('x');
-link = "https://ting-kerbell.github.io/BehavioralEconExp/index.html?i="+iter
+link = "https://ting-kerbell.github.io/BehavioralEconExp/dex.html?i="+iter
     $("#check").text("Check the back to see the result of your bet!");
     num = parseInt(result);
     if(num < 100){
@@ -143,15 +144,17 @@ link = "https://ting-kerbell.github.io/BehavioralEconExp/index.html?i="+iter
         $("#bet").text("$"+result);
         $("#betfoot").text("this round")
     }
-
 if(iter==null){
-    iter = 1;
+    iter = "1";
     console.log(iter);
     
 }
 $('#round span').text("Round "+iter+" Complete!");
 $("#next").click(function(){
+    if(iter=="5"){
     
+    location.replace("https://ting-kerbell.github.io/BehavioralEconExp/done.html");
+}
     location.replace(link);
 })
 

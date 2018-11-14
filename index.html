@@ -95,7 +95,7 @@ $("#sub").click(function(){
     var str = name + " Bet: "+ String(betNum) + " amount: "+String(monLeft);
     console.log(str);
 
-    pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
+   // pubnub.publish({channel : "behave", message : str}); //send the message to pubnub
     i++;
     append = "?i="+String(i)+"&x="+String(monLeft);
     lin = "https://ting-kerbell.github.io/BehavioralEconExp/pause.html" + append;
